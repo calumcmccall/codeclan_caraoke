@@ -77,3 +77,7 @@ class TestRoom(unittest.TestCase):
         self.room_1.check_in_guest(self.guest_1)
         self.room_1.check_out_guest(self.guest_4)
         self.assertNotIn(self.guest_4, self.room_1.guests)
+
+    def test_check_out_guest_not_in_room(self):
+        self.assertEqual("Guest isn't checked in to this room", self.room_1.check_out_guest(self.guest_5))
+

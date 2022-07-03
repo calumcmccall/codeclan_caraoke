@@ -71,3 +71,9 @@ class TestRoom(unittest.TestCase):
         self.room_2.check_in_group(self.group)
         self.room_2.check_out_group(self.group)
         self.assertEqual(0, len(self.room_2.guests))
+
+    def test_check_out_different_order(self):
+        self.room_1.check_in_group(self.group)
+        self.room_1.check_in_guest(self.guest_1)
+        self.room_1.check_out_guest(self.guest_4)
+        self.assertNotIn(self.guest_4, self.room_1.guests)

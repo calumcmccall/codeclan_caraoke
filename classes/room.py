@@ -15,5 +15,7 @@ class Room:
     def check_in_guest(self, guest):
         if guest.in_room == False:
             self.guests.append(guest)
-            guest.in_room = True
-            print(f"{guest.name} is now checked into room {self.room_no}")
+            guest.checked_in = True
+            guest.in_room = self.room_no
+        else:
+            return "Guest already checked in"

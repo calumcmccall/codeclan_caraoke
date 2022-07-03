@@ -22,6 +22,8 @@ class TestRoom(unittest.TestCase):
         self.room_1.songs.append(self.song_1)
 
         self.guest_1 = Guest("Max")
+        self.guest_2 = Guest("Sarah")
+        self.room_1.check_in_guest(self.guest_2)
 
 
 
@@ -41,4 +43,7 @@ class TestRoom(unittest.TestCase):
 
     def test_check_in_guest(self):
         self.room_1.check_in_guest(self.guest_1)
-        self.assertEqual(1, len(self.room_1.guests))
+        self.assertEqual(2, len(self.room_1.guests))
+
+    def test_check_in_guest_already_in_a_room(self):
+        self.assertEqual("Guest already checked in", self.room_1.check_in_guest(self.guest_2))

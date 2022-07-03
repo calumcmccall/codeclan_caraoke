@@ -25,9 +25,13 @@ class Room:
             self.check_in_guest(guest)
 
     def check_out_guest(self, guest):
-        if guest.in_room == True:
+        if guest.in_room == self.room_no:
             self.guests.remove(guest)
             guest.checked_in = False
             guest.in_room = 0
         else:
             return "Guest isn't checked in to this room"
+
+    def check_out_group(self, group_to_check_out):
+        for guest in group_to_check_out:
+            self.check_out_guest(guest)

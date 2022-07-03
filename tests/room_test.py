@@ -16,6 +16,8 @@ class TestRoom(unittest.TestCase):
         self.song_4 = Song("Break my soul", "Beyonce")
         self.song_5 = Song("Green green grass", "George Ezra")
 
+        self.song_playlist = [self.song_1, self.song_2, self.song_3, self.song_4, self.song_5]
+
         self.room_1.songs.append(self.song_1)
 
 
@@ -29,3 +31,7 @@ class TestRoom(unittest.TestCase):
     def test_add_song_on_request(self):
         self.room_1.add_song_to_room(self.song_2)
         self.assertEqual(self.room_1.songs[1], self.song_2)
+
+    def test_add_multiple_songs(self):
+        self.room_2.add_songs_to_room(self.song_playlist)
+        self.assertEqual(5, len(self.room_2.songs))

@@ -63,5 +63,11 @@ class TestRoom(unittest.TestCase):
         self.room_2.check_in_group(self.group)
         self.assertEqual(4, len(self.room_2.guests))
 
-    # def test_check_out_guest(self):
-    #     self.assertEqual(4, len(self.room_2.guests))
+    def test_check_out_guest(self):
+        self.room_1.check_out_guest(self.guest_2)
+        self.assertEqual(0, len(self.room_1.guests))
+
+    # def test_check_out_group(self):
+    #     self.room_2.check_in_group(self.group)
+    #     self.room_2.check_out_group(self.group)
+    #     self.assertEqual(0, len(self.room_2.guests))

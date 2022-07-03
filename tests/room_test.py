@@ -25,6 +25,12 @@ class TestRoom(unittest.TestCase):
         self.guest_2 = Guest("Sarah")
         self.room_1.check_in_guest(self.guest_2)
 
+        self.guest_3 = Guest("Ava")
+        self.guest_4 = Guest("Eve")
+        self.guest_5 = Guest("Martin")
+        self.guest_6 = Guest("Molly")
+
+        self.group = [self.guest_3, self.guest_4, self.guest_5, self.guest_6]
 
 
     def test_room_has_room_no(self):
@@ -47,3 +53,10 @@ class TestRoom(unittest.TestCase):
 
     def test_check_in_guest_already_in_a_room(self):
         self.assertEqual("Guest already checked in", self.room_1.check_in_guest(self.guest_2))
+
+    def test_check_in_group(self):
+        self.room_2.check_in_group(self.group)
+        self.assertEqual(self.room_2.guests, self.group)
+
+    # def test_check_out_guest(self):
+    #     self.assertEqual(4, len(self.room_2.guests))

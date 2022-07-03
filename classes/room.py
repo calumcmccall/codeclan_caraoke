@@ -19,3 +19,7 @@ class Room:
             guest.in_room = self.room_no
         else:
             return "Guest already checked in"
+
+    def check_in_group(self, group_to_check_in):
+        for guest in group_to_check_in:
+            self.check_in_guest(guest)

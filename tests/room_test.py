@@ -25,3 +25,7 @@ class TestRoom(unittest.TestCase):
 
     def test_add_song_to_room_from_start(self):
         self.assertEqual(self.room_1.songs[0], self.song_1)
+
+    def test_add_song_on_request(self):
+        self.room_1.add_song_to_room(self.song_2)
+        self.assertEqual(self.room_1.songs[1], self.song_2)

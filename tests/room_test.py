@@ -81,3 +81,28 @@ class TestRoom(unittest.TestCase):
     def test_check_out_guest_not_in_room(self):
         self.assertEqual("Guest isn't checked in to this room", self.room_1.check_out_guest(self.guest_5))
 
+    def test_integration_test(self):
+        self.room_hip_hop = Room(1)
+        self.song_get_it_together = Song("Get it together", "Beastie Boys")
+        self.song_through_the_wire = Song("Through the wire", "Kanye West")
+        self.hip_hop_playlist = [self.song_get_it_together, self.song_through_the_wire]
+        self.guest_tom = Guest("Tom")
+        self.guest_mary = Guest("Mary")
+        self.tom_and_mary = [self.guest_tom, self.guest_mary]
+
+        self.room_hip_hop.add_songs_to_room(self.hip_hop_playlist)
+        self.room_hip_hop.check_in_group(self.tom_and_mary)
+
+        self.assertEqual(2, len(self.room_hip_hop.guests))
+        self.assertEqual(2, len(self.room_hip_hop.songs))
+
+        self.guest_ryan = Guest("Ryan")
+        self.room_hip_hop.check_in_guest(self.guest_ryan)
+        self.song_sweetest_pie = Song("Sweetest pie", "Megan Thee Stallion")
+        self.room_hip_hop.add_song_to_room(self.song_sweetest_pie)
+
+        self.assertEqual(3, len(self.room_hip_hop.guests))
+        self.assertEqual(3, len(self.room_hip_hop.songs))
+
+        self.room_hip_hop.check_out_guest(self.guest_mary)
+        self.assertEqual(2, len(self.room_hip_hop.guests))

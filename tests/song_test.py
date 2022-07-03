@@ -9,3 +9,6 @@ class TestSong(unittest.TestCase):
 
     def test_song_has_title(self):
         self.assertEqual("Running up that hill", self.song_1.title)
+
+    def test_song_has_artist(self):
+        self.assertEqual("Kate Bush", self.song_1.artist)

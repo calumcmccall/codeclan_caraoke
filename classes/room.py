@@ -11,3 +11,9 @@ class Room:
     def add_songs_to_room(self, songs_to_add):
         for song in songs_to_add:
             self.add_song_to_room(song)
+
+    def check_in_guest(self, guest):
+        if guest.in_room == False:
+            self.guests.append(guest)
+            guest.in_room = True
+            print(f"{guest.name} is now checked into room {self.room_no}")

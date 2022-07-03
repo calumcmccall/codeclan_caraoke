@@ -3,6 +3,7 @@ from this import s
 import unittest
 from classes.room import Room
 from classes.song import Song
+from classes.guest import Guest
 
 class TestRoom(unittest.TestCase):
 
@@ -20,6 +21,8 @@ class TestRoom(unittest.TestCase):
 
         self.room_1.songs.append(self.song_1)
 
+        self.guest_1 = Guest("Max")
+
 
 
     def test_room_has_room_no(self):
@@ -35,3 +38,7 @@ class TestRoom(unittest.TestCase):
     def test_add_multiple_songs(self):
         self.room_2.add_songs_to_room(self.song_playlist)
         self.assertEqual(5, len(self.room_2.songs))
+
+    def test_check_in_guest(self):
+        self.room_1.check_in_guest(self.guest_1)
+        self.assertEqual(1, len(self.room_1.guests))
